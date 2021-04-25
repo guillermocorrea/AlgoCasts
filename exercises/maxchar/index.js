@@ -7,24 +7,19 @@ const assert = require("assert");
 // maxChar("abcccccccd") === "c"
 // maxChar("apple 1231111") === "1"
 
+// T: O(n), S: O(n)
 function maxChar(str) {
-  // T: O(n), S: O(n)
-  let mostCommonCharacter = "";
-  let mostCommonCharacterFreq = 0;
-  const frequency = {};
+  const freqMap = {};
+  let mostFreqChar,
+    mostFreqCharCount = 0;
   for (let character of str) {
-    if (frequency[character] !== undefined) {
-      frequency[character]++;
-    } else {
-      frequency[character] = 1;
-    }
-    // How to handle equal frequencies?
-    if (frequency[character] >= mostCommonCharacterFreq) {
-      mostCommonCharacterFreq = frequency[character];
-      mostCommonCharacter = character;
+    freqMap[character] = freqMap[character] + 1 || 1;
+    if (freqMap[character] > mostFreqCharCount) {
+      mostFreqCharCount = freqMap[character];
+      mostFreqChar = character;
     }
   }
-  return mostCommonCharacter;
+  return mostFreqChar;
 }
 
 assert.strictEqual(maxChar("a"), "a");
