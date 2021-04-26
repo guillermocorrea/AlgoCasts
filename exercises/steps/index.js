@@ -17,6 +17,28 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+/**
+ * T: O(n^2), S: O(1)
+ * @param {number} n
+ */
+function steps(n) {
+  for (let i = 1; i <= n; i++) {
+    console.log('#'.repeat(i).padEnd(n, ' '));
+  }
+  // stepsRecursive(n, '', 1);
+}
+
+// function stepsRecursive(n, partial, currRow) {
+//   partial += partial.length < currRow ? '#' : ' ';
+//   if (partial.length === n) {
+//     console.log(partial);
+//     partial = '';
+//     if (currRow >= n) {
+//       return;
+//     }
+//     currRow++;
+//   }
+//   stepsRecursive(n, partial, currRow);
+// }
 
 module.exports = steps;
